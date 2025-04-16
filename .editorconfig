@@ -1,0 +1,36 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Configurações padrão para todos os arquivos
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Configurações específicas para arquivos C
+[*.{c,h}]
+indent_style = space
+indent_size = 4
+
+# Configurações para Makefiles (exigem tabs)
+[Makefile]
+indent_style = tab
+
+# Configurações para arquivos CMake
+[CMakeLists.txt]
+indent_style = space
+indent_size = 2
+
+[*.cmake]
+indent_style = space
+indent_size = 2
+
+# Configurações para arquivos de configuração/metadados
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
