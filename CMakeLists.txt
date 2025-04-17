@@ -13,10 +13,10 @@ set(CMAKE_C_EXTENSIONS OFF)
 # Flags de compilação
 if(MSVC)
   # Flags para MSVC
-  add_compile_options(/W4 /WX)
+  add_compile_options(/W4 /WX /utf-8)
 else()
   # Flags para GCC/Clang
-  add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+  add_compile_options(-Wall -Wextra -Wpedantic -Werror -finput-charset=UTF-8 -fexec-charset=UTF-8)
 endif()
 
 # Includes globais

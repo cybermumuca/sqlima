@@ -2,6 +2,7 @@
 # Define a biblioteca para o módulo CLI
 add_library(sqlima_cli_lib
     cli.c
+    input.c
 )
 
 # Garante que os headers públicos e internos sejam encontrados

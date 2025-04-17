@@ -12,7 +12,7 @@ add_subdirectory(cli)
 add_executable(sqlima_cli main.c)
 target_link_libraries(sqlima_cli PRIVATE
     sqlima_cli_lib  # Biblioteca definida em src/cli/CMakeLists.txt
-    sqlima_common # Biblioteca definida em src/common/CMakeLists.txt
+    #sqlima_common # Biblioteca definida em src/common/CMakeLists.txt
     # sqlima_core # Adicionar quando a lib principal for criada
 )
 
