@@ -1,3 +1,7 @@
+/**
+ * @file input.h
+ * @brief Funções para manipulação de entradas do SQLima.
+ */
 #ifndef SQLIMA_INPUT_H
 #define SQLIMA_INPUT_H
 
@@ -23,9 +27,9 @@ typedef enum {
  * Responsável pelo ciclo de vida completo da memória alocada.
  */
 typedef struct {
-    char *buffer;       /** Ponteiro para o texto digitado */
-    size_t size;        /** Tamanho total alocado do buffer */
-    size_t length;      /** Quantidade de caracteres digitados (sem \0) */
+    char *buffer;       /* Ponteiro para o texto digitado */
+    size_t size;        /* Tamanho total alocado do buffer */
+    size_t length;      /* Quantidade de caracteres digitados (sem \0) */
 } InputBuffer;
 
 /**

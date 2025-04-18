@@ -4,22 +4,26 @@
 #include <string.h>
 
 /** @brief Tamanho inicial do buffer de entrada */
-#define INPUT_BUFFER_INITIAL_SIZE 24
+#define INPUT_BUFFER_INITIAL_SIZE 4096
 
 /**
  * @brief Cria e inicializa um novo InputBuffer
- * @return InputBuffer* inicializado ou NULL em caso de falha
+ * @return InputBuffer* inicializado
  */
 InputBuffer *create_input_buffer(void) {
     InputBuffer *input_buffer = malloc(sizeof(InputBuffer));
 
-    if (input_buffer == NULL) return NULL;
+    if (input_buffer == NULL) {
+        fprintf(stderr, "Erro fatal: falha ao alocar memória para a inicialização do buffer de entrada.\n");
+        exit(EXIT_FAILURE);
+    };
 
     input_buffer->buffer = malloc(INPUT_BUFFER_INITIAL_SIZE);
 
     if (input_buffer->buffer == NULL) {
         free(input_buffer);
-        return NULL;
+        fprintf(stderr, "Erro fatal: falha ao alocar memória para o buffer de entrada.\n");
+        exit(EXIT_FAILURE);
     }
 
     input_buffer->size = INPUT_BUFFER_INITIAL_SIZE;
