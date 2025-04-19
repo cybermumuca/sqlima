@@ -15,8 +15,6 @@ typedef enum {
     INPUT_SUCCESS,          /* Leitura bem-sucedida */
     INPUT_EOF,              /* Fim do arquivo (EOF) encontrado */
     INPUT_ERROR_IO,         /* Erro de I/O */
-    INPUT_ERROR_MEMORY,     /* Erro de alocação de memória */
-    INPUT_OVERFLOW          /* Tamanho máximo de buffer atingido */
 } InputResult;
 
 /**

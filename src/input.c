@@ -1,4 +1,5 @@
 #include "input.h"
+#include "memory.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,24 +9,12 @@
 
 /**
  * @brief Cria e inicializa um novo InputBuffer
- * @return InputBuffer* inicializado
+ * @return InputBuffer* inicializado (nunca retorna NULL)
  */
 InputBuffer *create_input_buffer(void) {
-    InputBuffer *input_buffer = malloc(sizeof(InputBuffer));
+    InputBuffer *input_buffer = sqlima_malloc(sizeof(InputBuffer));
 
-    if (input_buffer == NULL) {
-        fprintf(stderr, "Erro fatal: falha ao alocar memória para a inicialização do buffer de entrada.\n");
-        exit(EXIT_FAILURE);
-    };
-
-    input_buffer->buffer = malloc(INPUT_BUFFER_INITIAL_SIZE);
-
-    if (input_buffer->buffer == NULL) {
-        free(input_buffer);
-        fprintf(stderr, "Erro fatal: falha ao alocar memória para o buffer de entrada.\n");
-        exit(EXIT_FAILURE);
-    }
-
+    input_buffer->buffer = sqlima_malloc(INPUT_BUFFER_INITIAL_SIZE);
     input_buffer->size = INPUT_BUFFER_INITIAL_SIZE;
     input_buffer->length = 0;
 
@@ -37,11 +26,7 @@ InputBuffer *create_input_buffer(void) {
  * @param input_buffer Buffer onde a entrada será armazenada
  * @return `InputResult` Código de resultado da operação
 */
-InputResult read_input(InputBuffer* input_buffer) {
-    if (input_buffer == NULL) {
-        return INPUT_ERROR_MEMORY;
-    }
-
+InputResult read_input(InputBuffer *input_buffer) {
     const size_t chunk_size = 64;
     char *current_position = input_buffer->buffer;
     size_t remaining = input_buffer->size - 1;
@@ -72,11 +57,7 @@ InputResult read_input(InputBuffer* input_buffer) {
         if (remaining < chunk_size) {
             const size_t new_size = input_buffer->size * 2;
 
-            char *new_buffer = realloc(input_buffer->buffer, new_size);
-
-            if (new_buffer == NULL) {
-                return INPUT_ERROR_MEMORY;
-            }
+            char *new_buffer = sqlima_realloc(input_buffer->buffer, new_size);
 
             current_position = new_buffer + input_buffer->length;
             input_buffer->buffer = new_buffer;

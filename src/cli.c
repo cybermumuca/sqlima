@@ -32,19 +32,12 @@ int cli_run(int argc, char *argv[]) {
                 }
                 continue;
             }
-            case INPUT_ERROR_MEMORY: {
-                printf("Não foi possível alocar memoria\n");
-                return EXIT_FAILURE;
-            }
             case INPUT_ERROR_IO: {
                 printf("Não foi possível ler a entrada\n");
                 return EXIT_FAILURE;
             }
             case INPUT_EOF: {
                 return EXIT_SUCCESS;
-            }
-            case INPUT_OVERFLOW: {
-                return EXIT_FAILURE;
             }
         }
     }
